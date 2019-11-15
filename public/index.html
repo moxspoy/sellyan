@@ -38,6 +38,11 @@
 </head>
 
 <body class="index-page sidebar-collapse">
+    
+    <audio loop  id="audio">
+        <source src="ariel.mp3">
+      </audio>
+   
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg bg-primary fixed-top navbar-transparent " color-on-scroll="400">
     <div class="container">
@@ -66,11 +71,23 @@
             </a>
           </li>
           <li class="nav-item">
+              <a class="nav-link"  href="deployment.png">
+                <i class="now-ui-icons design_vector"></i>
+                <p>Development</p>
+              </a>
+            </li>
+          <li class="nav-item">
             <a class="nav-link btn btn-neutral" href="javascript:void(0)" onclick="scrollToDownload()">
-              <i class="now-ui-icons arrows-1_share-66"></i>
+              <i class="now-ui-icons media-1_button-play"></i>
               <p>Watch</p>
             </a>
           </li>
+          <li class="nav-item">
+              <a class="nav-link btn btn-neutral" href="javascript:void(0)" onclick="play()">
+                <i class="now-ui-icons media-2_note-03"></i>
+                <p>Play music</p>
+              </a>
+            </li>
           <li class="nav-item">
             <a class="nav-link" rel="tooltip" title="Follow me on Twitter" data-placement="bottom" href="https://twitter.com/moxspoy" target="_blank">
               <i class="fab fa-twitter"></i>
@@ -461,8 +478,9 @@
       nowuiKit.initSliders();
     });
 
-    function scrollToDownload() {
+    var isPlaying = false;
 
+    function scrollToDownload() {
       if ($('.section-download').length != 0) {
         $("html, body").animate({
           scrollTop: $('.section-download').offset().top
@@ -471,13 +489,25 @@
     }
 
     function scrollToRandom() {
-
     if ($('.section-nucleo-icons').length != 0) {
-      $("html, body").animate({
-        scrollTop: $('.section-nucleo-icons').offset().top
-      }, 1000);
+        $("html, body").animate({
+          scrollTop: $('.section-nucleo-icons').offset().top
+        }, 1000);
+      }
     }
+
+    function play(){
+      var audio = document.getElementById("audio");
+      if(isPlaying) {
+        audio.pause();
+        audio.currentTime = 0;
+        isPlaying = false;
+      } else {
+        audio.play();
+        isPlaying = true;
+      }
     }
+
   </script>
 </body>
 
